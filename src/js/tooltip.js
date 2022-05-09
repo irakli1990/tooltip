@@ -69,6 +69,7 @@ var setToolTip = function ({ selector, content }) {
       tooltipIcon.style.top = `-5px`;
     } else {
       tooltipIcon.classList.add("tps-tooltip--top");
+      tooltipIcon.style.width = `${320}px`;
     }
   };
 

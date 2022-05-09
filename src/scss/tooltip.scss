@@ -1,12 +1,12 @@
 .tps-tooltip {
-  position: absolute;
-  border: 1px solid #0078c2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-items: center;
-  line-height: 15px;
-  color: #0078c2;
+  position: absolute !important;
+  border: 1px solid #0078c2 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  align-items: center !important;
+  line-height: 15px !important;
+  color: #0078c2 !important;
   top: -2px;
   left: -10px;
   height: 18px;
@@ -38,14 +38,15 @@
     visibility: hidden;
     position: absolute;
     width: 225px;
-    background-color: #0078c2;
-    color: #fff;
-    text-align: justify;
-    padding: 5px 5px;
-    border-radius: 6px;
+    background-color: #0078c2 !important;
+    color: #fff !important;
+    text-align: justify !important;
+    padding: 5px 5px !important;
+    border-radius: 6px !important;
     z-index: 1;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    box-sizing: border-box;
+    transition: opacity 0.5s ease-in-out;
   }
 
   &.active::before {
@@ -93,14 +94,14 @@
   }
 
   &--top {
-    bottom: 170%;
-    left: 50%;
-    margin-left: -210px;
+    bottom: 200%;
+    left: 60%;
+    margin-left: -300px;
     &:after {
       content: "";
       position: absolute;
       top: 100%;
-      left: 90%;
+      left: 92%;
       margin-left: -5px;
       border-width: 5px;
       border-style: solid;
