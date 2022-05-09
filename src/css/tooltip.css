@@ -1,57 +1,77 @@
 .tps-tooltip {
   position: absolute;
-  display: inline-block;
-  border-bottom: 1px dotted #ccc;
-  color: #006080;
+  border: 1px solid #0078c2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  line-height: 15px;
+  color: #0078c2;
   top: -2px;
   left: -10px;
-  height: 15px;
-  width: 15px;
+  height: 18px;
+  width: 18px;
   border-radius: 50%;
-  background-color: #0078c2;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.tps-tooltip:hover {
+  background-color: #dbf1ff;
 }
 .tps-tooltip:before {
   content: "?";
-  font-size: small;
+  font-size: 13px;
+  font-weight: bold;
+  color: #0078c2;
   text-align: center;
-  color: #fff;
+  height: 18px;
+  width: 18px;
   display: flex;
+  align-items: center;
   justify-content: center;
-  font-weight: 500;
+  align-items: center;
+  line-height: 15px;
 }
 .tps-tooltip__text {
   visibility: hidden;
   position: absolute;
-  width: 120px;
-  background-color: #555;
+  width: 225px;
+  background-color: #0078c2;
   color: #fff;
-  text-align: center;
-  padding: 5px 0;
+  text-align: justify;
+  padding: 5px 5px;
   border-radius: 6px;
   z-index: 1;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
+}
+.tps-tooltip.active::before {
+  content: "?";
+  background-color: #0078c2;
+  color: #fff;
+  border-radius: 50%;
 }
 .tps-tooltip.active .tps-tooltip__text {
   visibility: visible;
   opacity: 1;
 }
 .tps-tooltip--right {
-  top: -5px;
+  top: -8px;
   left: 125%;
 }
 .tps-tooltip--right:after {
   content: "";
   position: absolute;
+  color: #fff;
   top: 50%;
   right: 100%;
   margin-top: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: transparent #555 transparent transparent;
+  border-color: transparent #0078c2 transparent transparent;
 }
 .tps-tooltip--bottom {
-  top: 135%;
+  top: 140%;
   left: 50%;
   margin-left: -60px;
 }
@@ -63,35 +83,35 @@
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: transparent transparent #555 transparent;
+  border-color: transparent transparent #0078c2 transparent;
 }
 .tps-tooltip--top {
-  bottom: 125%;
+  bottom: 170%;
   left: 50%;
-  margin-left: -60px;
+  margin-left: -210px;
 }
 .tps-tooltip--top:after {
   content: "";
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 90%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #555 transparent transparent transparent;
+  border-color: #0078c2 transparent transparent transparent;
 }
 .tps-tooltip--left {
-  top: -5px;
+  top: 0;
   bottom: auto;
-  right: 128%;
+  left: -100%;
 }
 .tps-tooltip--left:after {
   content: "";
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 100%;
-  margin-top: -5px;
+  margin-top: -10px;
   border-width: 5px;
   border-style: solid;
-  border-color: transparent transparent transparent #555;
+  border-color: transparent transparent transparent #0078c2;
 }/*# sourceMappingURL=tooltip.css.map */

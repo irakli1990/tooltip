@@ -27,13 +27,13 @@ var setToolTip = function ({ selector, content }) {
   parent.style.position = "relative";
 
   /**
-   * create
+   * create tooltip and position it
    */
   tooltip = document.createElement(elements.div);
   tooltip.classList.add("tps-tooltip");
   tooltip.style.left = "95%";
   tooltip.style.cursor = "pointer";
-  tooltipIcon = document.createElement(elements.span);
+  tooltipIcon = document.createElement(elements.div);
 
   tooltipIcon.innerText = content;
   tooltipIcon.classList.add("tps-tooltip__text");
@@ -45,27 +45,44 @@ var setToolTip = function ({ selector, content }) {
    * set on click event to icon
    */
   tooltip.onclick = function () {
-    const { right, left } = parent.getBoundingClientRect().toJSON();
+    const { left } = parent.getBoundingClientRect().toJSON();
 
-    if (this.classList.contains("active")) {
-      this.classList.remove("active");
-    } else {
+    /**
+     * check it tooltip is active (contains a active class)
+     * if not add it
+     * else remove it
+     */
+
+    if (!this.classList.contains("active")) {
       this.classList.add("active");
     }
 
-    const max = Object.keys({ left, right }).reduce(function (a, b) {
-      return { left, right }[a] > { left, right }[b] ? a : b;
-    });
+    let tooltipTextWidth = tooltipIcon.offsetWidth;
+    let widthWithPadding = tooltipTextWidth + 16;
+    let parentWidth = parent.offsetWidth;
 
-    switch (max) {
-      case "right":
-        tooltipIcon.classList.add("tps-tooltip--right");
-        break;
-      case "left":
-        tooltipIcon.classList.add("tps-tooltip--left");
-        break;
+    let leftSpace = left;
+
+    if (leftSpace > widthWithPadding) {
+      tooltipIcon.classList.add("tps-tooltip--left");
+      tooltipIcon.style.left = `-${parentWidth + tooltipTextWidth}px`;
+      tooltipIcon.style.top = `-5px`;
+    } else {
+      tooltipIcon.classList.add("tps-tooltip--top");
     }
   };
 
   return parent;
+};
+
+document.onclick = function (event) {
+  let tooltip = document.querySelector(".tps-tooltip");
+
+  if (event.target.classList.contains("tps-tooltip")) {
+    return false;
+  }
+
+  if (tooltip.classList.contains("active")) {
+    tooltip.classList.remove("active");
+  }
 };
