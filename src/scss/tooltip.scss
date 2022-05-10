@@ -49,14 +49,14 @@
     transition: opacity 0.5s ease-in-out;
   }
 
-  &.active::before {
+  &__active::before {
     content: "\003F";
     background-color: #0078c2;
     color: #fff;
     border-radius: 50%;
   }
 
-  &.active &__text {
+  &__active &__text {
     visibility: visible;
     opacity: 1;
   }
@@ -102,7 +102,7 @@
       position: absolute;
       top: 100%;
       left: 92%;
-      margin-left: -5px;
+      margin-left: -2px;
       border-width: 5px;
       border-style: solid;
       border-color: #0078c2 transparent transparent transparent;

@@ -27,63 +27,94 @@ var setToolTip = function ({ selector, content }) {
   parent.style.position = "relative";
 
   /**
-   * create tooltip and position it
+   * create tooltip and tooltipIconText
    */
   tooltip = document.createElement(elements.div);
-  tooltip.classList.add("tps-tooltip");
-  tooltip.style.left = "95%";
-  tooltip.style.cursor = "pointer";
   tooltipIcon = document.createElement(elements.div);
 
+  /**
+   * assign styles to tooltip
+   */
+  tooltip.classList.add("tps-tooltip");
+  tooltip.style.cursor = "pointer";
+  tooltip.style.left = "93%";
+
+  /**
+   * add content to tooltip
+   */
   tooltipIcon.innerText = content;
   tooltipIcon.classList.add("tps-tooltip__text");
 
+  /**
+   * calculate parent total width
+   * for initial tooltip
+   */
+  let parentWidth = parent.offsetWidth;
+  let totalWidth = parentWidth + 225;
+
+  /**
+   * get parents left space
+   */
+  const { left } = parent.getBoundingClientRect().toJSON();
+
+  /**
+   * decide where to show tooltip
+   */
+  if (left > 225) {
+    tooltipIcon.classList.add("tps-tooltip--left");
+    tooltipIcon.style.left = `-${totalWidth}px`;
+    tooltipIcon.style.top = `-5px`;
+  } else {
+    tooltipIcon.style.removeProperty("width");
+    tooltipIcon.classList.add("tps-tooltip--top");
+    tooltipIcon.style.width = `${320}px`;
+  }
+
+  /**
+   * append created elements to it's parents
+   */
   tooltip.appendChild(tooltipIcon);
   parent.appendChild(tooltip);
 
   /**
    * set on click event to icon
    */
-  tooltip.onclick = function () {
-    const { left } = parent.getBoundingClientRect().toJSON();
 
-    /**
-     * check it tooltip is active (contains a active class)
-     * if not add it
-     * else remove it
-     */
+  tooltip.addEventListener("click", (event) => {
+    console.log(event.target);
 
-    if (!this.classList.contains("active")) {
-      this.classList.add("active");
-    }
-
-    let tooltipTextWidth = tooltipIcon.offsetWidth;
-    let widthWithPadding = tooltipTextWidth + 16;
-    let parentWidth = parent.offsetWidth;
-
-    let leftSpace = left;
-
-    if (leftSpace > widthWithPadding) {
-      tooltipIcon.classList.add("tps-tooltip--left");
-      tooltipIcon.style.left = `-${parentWidth + tooltipTextWidth}px`;
-      tooltipIcon.style.top = `-5px`;
+    if (!event.target.classList.contains("tps-tooltip__active")) {
+      event.target.classList.add("tps-tooltip__active");
     } else {
-      tooltipIcon.classList.add("tps-tooltip--top");
-      tooltipIcon.style.width = `${320}px`;
+      event.target.classList.remove("tps-tooltip__active");
     }
-  };
+  });
 
   return parent;
 };
 
 document.onclick = function (event) {
-  let tooltip = document.querySelector(".tps-tooltip");
+  event.preventDefault();
+  let activeObjects = Array.from(
+    document.getElementsByClassName("tps-tooltip__active")
+  );
 
-  if (event.target.classList.contains("tps-tooltip")) {
+  console.log(activeObjects);
+  let activeCount = activeObjects.length;
+
+  if (event.target.classList.contains("tps-tooltip") && activeCount == 1) {
     return false;
+  } else if (
+    event.target.classList.contains("tps-tooltip") &&
+    activeCount > 1
+  ) {
+    activeObjects.forEach((element) =>
+      element.classList.remove("tps-tooltip__active")
+    );
+    event.target.classList.add("tps-tooltip__active");
   }
 
-  if (tooltip.classList.contains("active")) {
-    tooltip.classList.remove("active");
-  }
+  activeObjects.forEach((element) =>
+    element.classList.remove("tps-tooltip__active")
+  );
 };

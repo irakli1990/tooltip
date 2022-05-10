@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Create Your Stub | Checkstub Maker | ThePayStubs.com</title>
     <link rel="canonical" href="https://www.thepaystubs.com/create-stub" />
-    <script src="./src/js/tooltip.js"></script>
+    <script src="./src/js/tooltip.js" type="application/javascript"></script>
     <style>
       html {
         font-family: sans-serif;
@@ -3779,6 +3779,7 @@
                         <label
                           for="tps_create_stub_companyProfile_name"
                           class="form-block__label"
+                          id="company_name"
                         >
                           Company Name * </label
                         ><input
@@ -3807,6 +3808,7 @@
                               <label
                                 for="tps_create_stub_companyProfile_address_streetAddress"
                                 class="form-block__label"
+                                id="company_address"
                               >
                                 Company Address * </label
                               ><input
@@ -6425,7 +6427,13 @@
     </div>
     <script>
       setToolTip({
-        selector: ".form-block",
+        selector: "#company_name",
+        content:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+      });
+
+      setToolTip({
+        selector: "#company_address",
         content:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
       });
