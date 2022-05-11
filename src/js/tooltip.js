@@ -19,10 +19,24 @@ const elements = {
   span: "span",
 };
 
-var setToolTip = function ({ selector, content }) {
+var setToolTip = function ({ el, selector, content }) {
+  /**
+   * check if there is any selector or element
+   */
+  if (!el && !selector) {
+    throw new Error("either el or selector option should be specified");
+  }
+
   /**
    * select patent element from dom tree
    */
+  if (el) {
+    parent = el;
+  } else {
+    parent = document.querySelector(selector);
+  }
+  parent.style.position = "relative";
+
   parent = document.querySelector(selector);
   parent.style.position = "relative";
 
@@ -30,20 +44,7 @@ var setToolTip = function ({ selector, content }) {
    * create tooltip and tooltipIconText
    */
   tooltip = document.createElement(elements.div);
-  tooltipIcon = document.createElement(elements.div);
-
-  /**
-   * assign styles to tooltip
-   */
-  tooltip.classList.add("tps-tooltip");
-  tooltip.style.cursor = "pointer";
-  tooltip.style.left = "93%";
-
-  /**
-   * add content to tooltip
-   */
-  tooltipIcon.innerText = content;
-  tooltipIcon.classList.add("tps-tooltip__text");
+  tooltipIcon = document.createElement(elements.span);
 
   /**
    * calculate parent total width
@@ -51,6 +52,19 @@ var setToolTip = function ({ selector, content }) {
    */
   let parentWidth = parent.offsetWidth;
   let totalWidth = parentWidth + 225;
+
+  /**
+   * assign styles to tooltip
+   */
+  tooltip.classList.add("tps-tooltip");
+  tooltip.style.cursor = "pointer";
+  tooltip.style.left = `${parentWidth - 20}px`;
+
+  /**
+   * add content to tooltip
+   */
+  tooltipIcon.innerText = content;
+  tooltipIcon.classList.add("tps-tooltip__text");
 
   /**
    * get parents left space
@@ -81,8 +95,6 @@ var setToolTip = function ({ selector, content }) {
    */
 
   tooltip.addEventListener("click", (event) => {
-    console.log(event.target);
-
     if (!event.target.classList.contains("tps-tooltip__active")) {
       event.target.classList.add("tps-tooltip__active");
     } else {
