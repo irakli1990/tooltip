@@ -44,42 +44,19 @@ var setToolTip = function ({ el, selector, content }) {
   tooltipIcon = document.createElement(elements.span);
 
   /**
-   * calculate parent total width
-   * for initial tooltip
-   */
-  let parentWidth = parent.offsetWidth;
-  let totalWidth = parentWidth + 225;
-
-  /**
    * assign styles to tooltip
    */
+  tooltip = document.createElement(elements.div);
   tooltip.classList.add("tps-tooltip");
+  // tooltip.style.left = "95%";
   tooltip.style.cursor = "pointer";
-  tooltip.style.left = `${parentWidth - 20}px`;
+  tooltipIcon = document.createElement(elements.div);
 
   /**
    * add content to tooltip
    */
   tooltipIcon.innerText = content;
   tooltipIcon.classList.add("tps-tooltip__text");
-
-  /**
-   * get parents left space
-   */
-  const { left } = parent.getBoundingClientRect().toJSON();
-
-  /**
-   * decide where to show tooltip
-   */
-  if (left > 225) {
-    tooltipIcon.classList.add("tps-tooltip--left");
-    tooltipIcon.style.left = `-${totalWidth}px`;
-    tooltipIcon.style.top = `-5px`;
-  } else {
-    tooltipIcon.style.removeProperty("width");
-    tooltipIcon.classList.add("tps-tooltip--top");
-    tooltipIcon.style.width = `${320}px`;
-  }
 
   /**
    * append created elements to it's parents

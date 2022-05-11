@@ -1,3 +1,16 @@
+$screen-s-min: 576px;
+
+$screen-sm-min: 658px;
+
+// Small tablets (portrait view)
+$screen-md-min: 800px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1366px;
+
 .tps-tooltip {
   position: absolute !important;
   border: 1px solid #0078c2 !important;
@@ -7,8 +20,8 @@
   align-items: center !important;
   line-height: 15px !important;
   color: #0078c2 !important;
-  top: -2px;
-  left: -10px;
+  top: 0;
+  right: 10px;
   height: 18px;
   width: 18px;
   border-radius: 50%;
@@ -66,73 +79,88 @@
   &__active &__text {
     visibility: visible;
     opacity: 1;
-  }
 
-  &--right {
-    top: -8px;
-    left: 125%;
-
-    &:after {
-      content: "";
-      position: absolute;
-      color: #fff;
-      top: 50%;
-      right: 100%;
-      margin-top: -5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: transparent #0078c2 transparent transparent;
+    @media screen and (max-width: $screen-s-min) {
+      width: 265px;
+      bottom: 200%;
+      left: 60%;
+      margin-left: -300px;
+      &:after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 92%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #0078c2 transparent transparent transparent;
+      }
     }
-  }
 
-  &--bottom {
-    top: 140%;
-    left: 50%;
-    margin-left: -60px;
-
-    &:after {
-      content: "";
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      margin-left: -5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: transparent transparent #0078c2 transparent;
+    @media screen and (max-width: $screen-sm-min) {
+      width: 265px;
+      bottom: 200%;
+      left: 60%;
+      margin-left: -250px;
+      &:after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 92%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #0078c2 transparent transparent transparent;
+      }
     }
-  }
-
-  &--top {
-    bottom: 200%;
-    left: 60%;
-    margin-left: -300px;
-
-    &:after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 92%;
-      margin-left: -2px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: #0078c2 transparent transparent transparent;
+    @media screen and (min-width: $screen-md-min) {
+      width: 260px;
+      bottom: 200%;
+      left: 60%;
+      margin-left: -250px;
+      &:after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 92%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #0078c2 transparent transparent transparent;
+      }
     }
-  }
 
-  &--left {
-    top: 0;
-    bottom: auto;
-    left: -100%;
+    @media screen and (min-width: $screen-lg-min) {
+      width: 265px;
+      bottom: 200%;
+      left: 60%;
+      margin-left: -250px;
+      &:after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 92%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #0078c2 transparent transparent transparent;
+      }
+    }
 
-    &:after {
-      content: "";
-      position: absolute;
-      top: 8px;
-      left: 100%;
-      // margin-top: -10px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: transparent transparent transparent #0078c2;
+    @media screen and (min-width: $screen-xl-min) {
+      width: 225px;
+      top: -5px !important;
+      bottom: auto;
+      left: -340px;
+      &:after {
+        content: "";
+        position: absolute;
+        top: 5%;
+        left: 100%;
+        border-width: 10px;
+        border-style: solid;
+        border-color: transparent transparent transparent #0078c2;
+      }
     }
   }
 }

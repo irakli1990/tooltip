@@ -3827,13 +3827,15 @@
                               </div>
                             </div>
                           </div>
-                          <div class="tps-address__block u-hidden">
+                          <div class="tps-address__block">
                             <div class="tps-address__rows u-flex">
                               <div class="tps-address__row">
                                 <div class="form-block">
                                   <label
                                     for="tps_create_stub_companyProfile_address_apartmentNumber"
                                     class="form-block__label"
+                                    id="apt_field"
+
                                   >
                                     Apt/Ste No. </label
                                   ><input
@@ -3853,6 +3855,7 @@
                                   <label
                                     for="tps_create_stub_companyProfile_address_city"
                                     class="form-block__label"
+                                    id="city_field"
                                   >
                                     City * </label
                                   ><input
@@ -3879,6 +3882,7 @@
                                   <label
                                     for="tps_create_stub_companyProfile_address_state"
                                     class="form-block__label"
+                                    id="stete_field"
                                   >
                                     State * </label
                                   ><select
@@ -6032,27 +6036,19 @@
     </div>
     <script>
       setToolTip({
-        selector: "#company_name",
+        selector: ".form-block",
         content:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+          "Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing.",
       });
 
-      setToolTip({
-        selector: "#company_address",
-        content: "Lorem Ipsum is simply dummy ",
-      });
+// setToolTip({
+//         selector: ".form-block",
+//         content:
+//           "Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing.",
+//       });
 
-      setToolTip({
-        selector: "#employ_fullname",
-        content:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      });
-
-      setToolTip({
-        selector: "#hours_worked",
-        content:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      });
+      
+      
     </script>
   </body>
 </html>
