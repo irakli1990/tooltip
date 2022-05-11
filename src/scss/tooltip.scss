@@ -1,11 +1,10 @@
-$screen-s-min: 576px;
+/* Extra small devices (phones, 600px and down) */
+$screen-sm-min: 600px;
 
-$screen-sm-min: 658px;
+/* Medium devices (landscape tablets, 768px and up) */
+$screen-md-min: 768px;
 
-// Small tablets (portrait view)
-$screen-md-min: 800px;
-
-// Tablets and small desktops
+/* Large devices (laptops/desktops, 992px and up) */
 $screen-lg-min: 992px;
 
 // Large tablets and desktops
@@ -80,11 +79,11 @@ $screen-xl-min: 1366px;
     visibility: visible;
     opacity: 1;
 
-    @media screen and (max-width: $screen-s-min) {
+    @media screen and (max-width: $screen-sm-min) {
       width: 265px;
       bottom: 200%;
       left: 60%;
-      margin-left: -300px;
+      margin-left: -250px;
       &:after {
         content: "";
         position: absolute;
@@ -97,7 +96,7 @@ $screen-xl-min: 1366px;
       }
     }
 
-    @media screen and (max-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-sm-min) {
       width: 265px;
       bottom: 200%;
       left: 60%;
