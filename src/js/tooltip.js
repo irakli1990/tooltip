@@ -37,9 +37,6 @@ var setToolTip = function ({ el, selector, content }) {
   }
   parent.style.position = "relative";
 
-  parent = document.querySelector(selector);
-  parent.style.position = "relative";
-
   /**
    * create tooltip and tooltipIconText
    */
