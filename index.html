@@ -6035,12 +6035,13 @@
 
     </div>
     <script>
-      setToolTip({
-        selector: ".form-block",
-        content:
-          "Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing.",
-      });
+    let formBlocks = Array.from(document.querySelectorAll(".form-block"))
 
+
+    for (var i = 0; i < formBlocks.length; i++) {
+    setToolTip({el: formBlocks[i], content: `Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing.${i}`})
+  }
+   
 // setToolTip({
 //         selector: ".form-block",
 //         content:

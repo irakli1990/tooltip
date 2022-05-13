@@ -37,6 +37,10 @@ var setToolTip = function ({ el, selector, content }) {
   }
   parent.style.position = "relative";
 
+  const id = uuidv4();
+
+  parent.setAttribute("id", id);
+
   /**
    * create tooltip and tooltipIconText
    */
@@ -56,23 +60,32 @@ var setToolTip = function ({ el, selector, content }) {
    * add content to tooltip
    */
   tooltipIcon.innerText = content;
-  tooltipIcon.classList.add("tps-tooltip__text");
+  tooltipIcon.classList.add("tps-tooltip-text");
 
   /**
    * append created elements to it's parents
    */
-  tooltip.appendChild(tooltipIcon);
   parent.appendChild(tooltip);
+  parent.appendChild(tooltipIcon);
 
   /**
    * set on click event to icon
    */
 
+  console.log(parent.lastChild);
+
   tooltip.addEventListener("click", (event) => {
+    console.log(tooltipIcon);
     if (!event.target.classList.contains("tps-tooltip__active")) {
       event.target.classList.add("tps-tooltip__active");
+      document
+        .getElementById(id)
+        .lastChild.classList.add("tps-tooltip-text__active");
     } else {
       event.target.classList.remove("tps-tooltip__active");
+      document
+        .getElementById(id)
+        .lastChild.classList.remove("tps-tooltip-text__active");
     }
   });
 
@@ -85,7 +98,9 @@ document.onclick = function (event) {
     document.getElementsByClassName("tps-tooltip__active")
   );
 
-  console.log(activeObjects);
+  let activeObjectsTexts = Array.from(
+    document.getElementsByClassName("tps-tooltip-text__active")
+  );
   let activeCount = activeObjects.length;
 
   if (event.target.classList.contains("tps-tooltip") && activeCount == 1) {
@@ -103,4 +118,17 @@ document.onclick = function (event) {
   activeObjects.forEach((element) =>
     element.classList.remove("tps-tooltip__active")
   );
+
+  activeObjectsTexts.forEach((element) =>
+    element.classList.remove("tps-tooltip-text__active")
+  );
 };
+
+function uuidv4() {
+  return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
+    (
+      c ^
+      (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+    ).toString(16)
+  );
+}
