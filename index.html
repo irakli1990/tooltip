@@ -7,7 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Create Your Stub | Checkstub Maker | ThePayStubs.com</title>
     <link rel="canonical" href="https://www.thepaystubs.com/create-stub" />
-    <script src="./src/js/tooltip.js" type="application/javascript"></script>
+     <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
     <style>
       html {
         font-family: sans-serif;
@@ -6034,12 +6037,14 @@
         </div>
 
     </div>
+    <script src="./src/js/tooltip.js"></script>
+
     <script>
     let formBlocks = Array.from(document.querySelectorAll(".form-block"))
 
 
     for (var i = 0; i < formBlocks.length; i++) {
-    setToolTip({el: formBlocks[i], content: `Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing.${i}`})
+    setToolTip({el: formBlocks[i], content: `Enter the name of the company Enter the name of the company`})
   }
    
 // setToolTip({

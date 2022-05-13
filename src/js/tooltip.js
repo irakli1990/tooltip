@@ -89,39 +89,40 @@ var setToolTip = function ({ el, selector, content }) {
     }
   });
 
-  return parent;
-};
+  window.document.onclick = function (event) {
+    let activeObjects = Array.from(
+      document.getElementsByClassName("tps-tooltip__active")
+    );
 
-document.onclick = function (event) {
-  event.preventDefault();
-  let activeObjects = Array.from(
-    document.getElementsByClassName("tps-tooltip__active")
-  );
+    let activeObjectsTexts = Array.from(
+      document.getElementsByClassName("tps-tooltip-text__active")
+    );
+    let activeCount = activeObjects.length;
 
-  let activeObjectsTexts = Array.from(
-    document.getElementsByClassName("tps-tooltip-text__active")
-  );
-  let activeCount = activeObjects.length;
+    if (event.target.classList.contains("onoffswitch")) return;
 
-  if (event.target.classList.contains("tps-tooltip") && activeCount == 1) {
-    return false;
-  } else if (
-    event.target.classList.contains("tps-tooltip") &&
-    activeCount > 1
-  ) {
+    if (event.target.classList.contains("tps-tooltip") && activeCount == 1) {
+      return false;
+    } else if (
+      event.target.classList.contains("tps-tooltip") &&
+      activeCount > 1
+    ) {
+      activeObjects.forEach((element) =>
+        element.classList.remove("tps-tooltip__active")
+      );
+      event.target.classList.add("tps-tooltip__active");
+    }
+
     activeObjects.forEach((element) =>
       element.classList.remove("tps-tooltip__active")
     );
-    event.target.classList.add("tps-tooltip__active");
-  }
 
-  activeObjects.forEach((element) =>
-    element.classList.remove("tps-tooltip__active")
-  );
+    activeObjectsTexts.forEach((element) =>
+      element.classList.remove("tps-tooltip-text__active")
+    );
+  };
 
-  activeObjectsTexts.forEach((element) =>
-    element.classList.remove("tps-tooltip-text__active")
-  );
+  // return parent;
 };
 
 function uuidv4() {
