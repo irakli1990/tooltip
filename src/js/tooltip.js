@@ -72,16 +72,9 @@ var setToolTip = function ({ el, selector, content }) {
    * set on click event to icon
    */
 
-  console.log(parent.lastChild);
-
   tooltip.addEventListener("click", (event) => {
-    console.log(document.getElementById(id).offsetWidth);
-    console.log(document.getElementById(id).lastChild.offsetWidth);
-    console.log(tooltipIcon);
-
     let parentWidth = document.getElementById(id).offsetWidth;
     let childWidth = document.getElementById(id).lastChild.offsetWidth;
-    console.log(window.innerWidth);
 
     if (!window.matchMedia("(min-width: 1366px)").matches) {
       if (parentWidth < childWidth) {
@@ -144,6 +137,10 @@ var setToolTip = function ({ el, selector, content }) {
   // return parent;
 };
 
+/**
+ *
+ * @returns uuid for parent element id assignment
+ */
 function uuidv4() {
   return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
     (
