@@ -24,45 +24,41 @@ div.tps-tooltip-text {
 }
 
 .tps-tooltip {
-  position: absolute !important;
-  border: 1px solid #0078c2 !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  line-height: 15px !important;
-  color: #0078c2 !important;
-  top: 0;
-  right: 10px;
   height: 18px;
   width: 18px;
   border-radius: 50%;
+  border: 1.5px solid #0078c2;
+  position: absolute;
+  background-color: #0078c2;
+  text-align: center;
+  top: 0;
+  right: 10px;
+  background-color: #fff;
   box-sizing: border-box;
 
   &:hover {
-    background-color: #dbf1ff;
+    background: #c8e1f0;
   }
 
   &:before {
     content: "\003F";
-    font-size: 13px;
-    font-weight: bold;
-    color: #0078c2;
+    display: inline-block;
+    width: 100%;
     text-align: center;
-    height: 18px;
-    width: 18px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    line-height: 15px;
-    border-radius: 50%;
-    box-sizing: border-box;
+    font-weight: 700;
+    color: #0078c2;
   }
 
   &__active::before {
     content: "\003F";
-    background-color: #0078c2;
     color: #fff;
-    border-radius: 50%;
+  }
+
+  &__active {
+    background-color: #0078c2;
+    &:hover {
+      background-color: #0078c2;
+    }
   }
 
   &__active &__text {
@@ -92,16 +88,18 @@ div.tps-tooltip-text {
   @media screen and (min-width: $screen-xs-min) {
     top: -10px !important;
     right: 0 !important;
-    width: 160px;
+    width: 219px;
+    min-width: 160px;
+    min-height: 41px;
+    box-sizing: border-box;
     padding: 7px 7px 10px 11px !important;
-    -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
 
     &:after {
       content: "";
       position: absolute;
       top: 100%;
-      left: 88%;
+      left: 91%;
       margin-left: -5px;
       border-width: 5px;
       border-style: solid;
@@ -112,18 +110,19 @@ div.tps-tooltip-text {
   @media screen and (max-width: $screen-xs-min) {
     top: -10px !important;
     right: 0 !important;
-    width: 160px;
     padding: 7px 7px 10px 11px !important;
-
+    width: 219px;
+    min-width: 160px;
+    min-height: 41px;
+    box-sizing: border-box;
     -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
 
-    width: 160px;
     &:after {
       content: "";
       position: absolute;
       top: 100%;
-      left: 88%;
+      left: 91%;
       margin-left: -5px;
       border-width: 5px;
       border-style: solid;
@@ -133,13 +132,13 @@ div.tps-tooltip-text {
   @media screen and (min-width: $screen-sm-min) {
     top: -10px !important;
     right: 0 !important;
-    width: 190px;
+    min-width: 160px;
+    width: 219px;
+    box-sizing: border-box;
+    min-height: 41px;
     padding: 7px 7px 10px 11px !important;
-
     -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
-
-    width: 175px;
     &:after {
       content: "";
       position: absolute;
@@ -154,10 +153,10 @@ div.tps-tooltip-text {
   @media screen and (min-width: $screen-md-min) {
     top: -10px !important;
     right: 0 !important;
-    height: 24px;
-    width: 201px;
+    width: 219px;
     padding: 7px 7px 7px 11px !important;
-
+    min-height: 41px;
+    box-sizing: border-box;
     -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
 
@@ -165,7 +164,7 @@ div.tps-tooltip-text {
       content: "";
       position: absolute;
       top: 100%;
-      left: 90%;
+      left: 91%;
       margin-left: -5px;
       border-width: 5px;
       border-style: solid;
@@ -175,11 +174,12 @@ div.tps-tooltip-text {
   @media screen and (min-width: $screen-lg-min) {
     top: -10px !important;
     right: 0 !important;
-    width: 201px;
+    width: 219px;
     padding: 7px 7px 10px 11px !important;
-
+    min-width: 160px;
     -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
+    min-height: 41px;
 
     &:after {
       content: "";
@@ -218,5 +218,15 @@ div.tps-tooltip-text {
   &__active {
     visibility: visible;
     opacity: 1;
+  }
+
+  &__shrink {
+    width: 170px;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 87%;
+    }
   }
 }

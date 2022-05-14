@@ -75,7 +75,18 @@ var setToolTip = function ({ el, selector, content }) {
   console.log(parent.lastChild);
 
   tooltip.addEventListener("click", (event) => {
+    console.log(document.getElementById(id).offsetWidth);
+    console.log(document.getElementById(id).lastChild.offsetWidth);
     console.log(tooltipIcon);
+
+    let parentWidth = document.getElementById(id).offsetWidth;
+    let childWidth = document.getElementById(id).lastChild.offsetWidth;
+    if (parentWidth < childWidth) {
+      document
+        .getElementById(id)
+        .lastChild.classList.add("tps-tooltip-text__shrink");
+    }
+
     if (!event.target.classList.contains("tps-tooltip__active")) {
       event.target.classList.add("tps-tooltip__active");
       document
