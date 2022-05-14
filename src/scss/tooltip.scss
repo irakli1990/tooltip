@@ -32,7 +32,7 @@ div.tps-tooltip-text {
   background-color: #0078c2;
   text-align: center;
   top: 0;
-  right: 10px;
+  right: 0px;
   background-color: #fff;
   box-sizing: border-box;
 
@@ -76,6 +76,8 @@ div.tps-tooltip-text {
   font-weight: 400 !important;
   font-size: 14px !important;
   line-height: 16.41px !important;
+  padding-top: 14px;
+  padding-bottom: 16px;
   align-items: center !important;
   transition: opacity 0.5s ease-in-out;
   visibility: hidden;
@@ -93,14 +95,15 @@ div.tps-tooltip-text {
     min-height: 41px;
     box-sizing: border-box;
     padding: 7px 7px 10px 11px !important;
-    transform: translateY(-100%);
+    -webkit-transform: translateY(-114%);
+    transform: translateY(-114%);
 
     &:after {
       content: "";
       position: absolute;
       top: 100%;
-      left: 91%;
-      margin-left: -5px;
+      left: 100%;
+      margin-left: -15px;
       border-width: 5px;
       border-style: solid;
       border-color: #0078c2 transparent transparent transparent;
@@ -115,15 +118,15 @@ div.tps-tooltip-text {
     min-width: 160px;
     min-height: 41px;
     box-sizing: border-box;
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%);
+    -webkit-transform: translateY(-114%);
+    transform: translateY(-114%);
 
     &:after {
       content: "";
       position: absolute;
       top: 100%;
-      left: 91%;
-      margin-left: -5px;
+      left: 100%;
+      margin-left: -15px;
       border-width: 5px;
       border-style: solid;
       border-color: #0078c2 transparent transparent transparent;
@@ -137,14 +140,14 @@ div.tps-tooltip-text {
     box-sizing: border-box;
     min-height: 41px;
     padding: 7px 7px 10px 11px !important;
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%);
+    -webkit-transform: translateY(-114%);
+    transform: translateY(-114%);
     &:after {
       content: "";
       position: absolute;
       top: 100%;
-      left: 90%;
-      margin-left: -5px;
+      left: 100%;
+      margin-left: -15px;
       border-width: 5px;
       border-style: solid;
       border-color: #0078c2 transparent transparent transparent;
@@ -157,15 +160,15 @@ div.tps-tooltip-text {
     padding: 7px 7px 7px 11px !important;
     min-height: 41px;
     box-sizing: border-box;
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%);
+    -webkit-transform: translateY(-114%);
+    transform: translateY(-114%);
 
     &:after {
       content: "";
       position: absolute;
       top: 100%;
-      left: 91%;
-      margin-left: -5px;
+      left: 100%;
+      margin-left: -15px;
       border-width: 5px;
       border-style: solid;
       border-color: #0078c2 transparent transparent transparent;
@@ -177,16 +180,16 @@ div.tps-tooltip-text {
     width: 219px;
     padding: 7px 7px 10px 11px !important;
     min-width: 160px;
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%);
+    -webkit-transform: translateY(-114%);
+    transform: translateY(-114%);
     min-height: 41px;
 
     &:after {
       content: "";
       position: absolute;
       top: 100%;
-      left: 90%;
-      margin-left: -3px;
+      left: 100%;
+      margin-left: -15px;
       border-width: 5px;
       border-style: solid;
       border-color: #0078c2 transparent transparent transparent;
@@ -226,7 +229,7 @@ div.tps-tooltip-text {
       content: "";
       position: absolute;
       top: 100%;
-      left: 87%;
+      left: 100%;
     }
   }
 }
