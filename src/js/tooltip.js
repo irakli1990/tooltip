@@ -59,7 +59,6 @@ var setToolTip = function ({ el, selector, content }) {
    */
   tooltip = document.createElement(elements.div);
   tooltip.classList.add("tps-tooltip");
-  // tooltip.style.left = "95%";
   tooltip.style.cursor = "pointer";
   tooltipIcon = document.createElement(elements.div);
 
