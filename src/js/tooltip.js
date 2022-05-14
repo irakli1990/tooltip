@@ -81,10 +81,18 @@ var setToolTip = function ({ el, selector, content }) {
 
     let parentWidth = document.getElementById(id).offsetWidth;
     let childWidth = document.getElementById(id).lastChild.offsetWidth;
-    if (parentWidth < childWidth) {
+    console.log(window.innerWidth);
+
+    if (!window.matchMedia("(min-width: 1366px)").matches) {
+      if (parentWidth < childWidth) {
+        document
+          .getElementById(id)
+          .lastChild.classList.add("tps-tooltip-text__shrink");
+      }
+    } else {
       document
         .getElementById(id)
-        .lastChild.classList.add("tps-tooltip-text__shrink");
+        .lastChild.classList.remove("tps-tooltip-text__shrink");
     }
 
     if (!event.target.classList.contains("tps-tooltip__active")) {
