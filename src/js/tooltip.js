@@ -1,3 +1,10 @@
+/**
+ * @author Irakli Kardava
+ * @email iraklikardawa@gmail.com
+ * https://github.com/irakli1990
+ *
+ */
+
 let parent;
 let tooltip;
 let tooltipIcon;
