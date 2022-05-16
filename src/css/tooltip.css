@@ -182,7 +182,7 @@ div.tps-tooltip-text {
 @media screen and (min-width: 1366px) {
   .tps-tooltip-text {
     top: 0 !important;
-    right: 110% !important;
+    right: calc(100% + 20px) !important;
     width: 178px;
     padding: 18px 11px 12px 17px !important;
     transform: translateY(-10%);
@@ -214,4 +214,4 @@ div.tps-tooltip-text {
   position: absolute;
   top: 100%;
   left: 100%;
-}/*# sourceMappingURL=tooltip.css.map */
+} /*# sourceMappingURL=tooltip.css.map */
