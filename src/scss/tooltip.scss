@@ -78,10 +78,8 @@ div.tps-tooltip-text {
   font-weight: 400 !important;
   font-size: 14px !important;
   line-height: 16.41px !important;
-  padding-top: 14px;
-  padding-bottom: 16px;
   align-items: center !important;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
   visibility: hidden;
   position: absolute;
   display: flex !important;
@@ -96,7 +94,7 @@ div.tps-tooltip-text {
     min-width: 160px;
     min-height: 41px;
     box-sizing: border-box;
-    padding: 7px 7px 10px 11px !important;
+    padding: 14px 16px 11px 12px !important; // (top, right, bottom, and left).
     -webkit-transform: translateY(-114%);
     transform: translateY(-114%);
 
@@ -115,7 +113,7 @@ div.tps-tooltip-text {
   @media screen and (max-width: $screen-xs-min) {
     top: -10px !important;
     right: 0 !important;
-    padding: 7px 7px 10px 11px !important;
+    padding: 14px 16px 11px 12px !important; // (top, right, bottom, and left).
     width: 219px;
     min-width: 160px;
     min-height: 41px;
@@ -141,7 +139,7 @@ div.tps-tooltip-text {
     width: 219px;
     box-sizing: border-box;
     min-height: 41px;
-    padding: 7px 7px 10px 11px !important;
+    padding: 14px 16px 11px 12px !important; // (top, right, bottom, and left).
     -webkit-transform: translateY(-114%);
     transform: translateY(-114%);
     &:after {
@@ -159,7 +157,7 @@ div.tps-tooltip-text {
     top: -10px !important;
     right: 0 !important;
     width: 219px;
-    padding: 7px 7px 7px 11px !important;
+    padding: 14px 16px 11px 12px !important; // (top, right, bottom, and left).
     min-height: 41px;
     box-sizing: border-box;
     -webkit-transform: translateY(-114%);
@@ -180,7 +178,7 @@ div.tps-tooltip-text {
     top: -10px !important;
     right: 0 !important;
     width: 219px;
-    padding: 7px 7px 10px 11px !important;
+    padding: 14px 16px 11px 12px !important; // (top, right, bottom, and left).
     min-width: 160px;
     -webkit-transform: translateY(-114%);
     transform: translateY(-114%);
@@ -199,24 +197,25 @@ div.tps-tooltip-text {
   }
   @media screen and (min-width: $screen-xl-min) {
     top: 0 !important;
-    min-height: 81px;
-    right: 105% !important;
+    // min-height: 81px;
+    right: 110% !important;
     width: 178px;
-    padding: 7px 7px 7px 18px !important;
+    padding: 18px 11px 12px 17px !important; // (top, right, bottom, and left).
     -webkit-transform: translateY(-10%);
     transform: translateY(-10%);
     &:after {
       content: "";
+      color: transparent;
       position: absolute;
-      box-sizing: border-box;
-      background-color: #0078c2;
-      height: 11px;
-      width: 13px;
-      left: 105%;
-      top: 12px;
-      transform: translateY(8%);
-      border-radius: 1px;
-      transform: rotate(-45deg);
+      left: 97%;
+      top: 0px;
+      border-radius: 2px;
+      transform: rotate(155deg);
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 15px solid #0078c2;
     }
   }
 
