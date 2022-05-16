@@ -43,6 +43,11 @@ var setToolTip = function ({ el, selector, content }) {
     parent = document.querySelector(selector);
   }
   parent.style.position = "relative";
+  parent.classList.add("has-tooltip");
+  let oldTooltip = parent.querySelector(".tps-tooltip, .tps-tooltip-text");
+  if (oldTooltip) {
+    oldTooltip.remove();
+  }
 
   const id = uuidv4();
 

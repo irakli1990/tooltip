@@ -14,62 +14,64 @@ $screen-lg-min: 992px;
 $screen-xl-min: 1366px;
 
 div.tps-tooltip-text {
-  font-size: 14px !important;
-  font-family: Roboto !important;
-  font-size: 14px !important;
-  font-weight: 400 !important;
-  line-height: 16px !important;
-  letter-spacing: 0em !important;
-  text-align: left !important;
+  font-size: 14px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
 .tps-tooltip {
-  height: 18px !important;
-  width: 18px !important;
-  border-radius: 50% !important;
-  border: 1.5px solid #0078c2 !important;
-  position: absolute !important;
-  background-color: #0078c2 !important;
-  text-align: center !important;
-  top: 0 !important;
-  right: 0px !important;
-  background-color: #fff !important;
-  box-sizing: border-box !important;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  border: 1.5px solid #0078c2;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
-    background: #c8e1f0 !important;
+    background: #c8e1f0;
   }
 
   &:before {
-    content: "\003F" !important;
-    display: inline-block !important;
-    width: 100% !important;
-    text-align: center !important;
-    font-weight: 700 !important;
-    color: #0078c2 !important;
+    content: "\003F";
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    color: #0078c2;
   }
 
   &__active::before {
-    content: "\003F" !important;
-    color: #fff !important;
+    content: "\003F";
+    color: #fff;
   }
 
   &__active {
-    background-color: #0078c2 !important;
+    background-color: #0078c2;
     &:hover {
-      background-color: #0078c2 !important;
+      background-color: #0078c2;
     }
   }
 
   &__active &__text {
-    visibility: visible !important;
-    opacity: 1 !important;
+    visibility: visible;
+    opacity: 1;
   }
 }
 
 .tps-tooltip-text {
-  font-family: "Roboto" !important;
-  font-style: normal !important;
+  font-family: "Roboto";
+  font-style: normal;
   background-color: #0078c2 !important;
   color: #fff !important;
   border-radius: 6px !important;
