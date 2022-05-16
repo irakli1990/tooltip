@@ -44,8 +44,9 @@ var setToolTip = function ({ el, selector, content }) {
   }
   parent.style.position = "relative";
   parent.classList.add("has-tooltip");
-  let oldTooltip = parent.querySelector(".tps-tooltip, .tps-tooltip-text");
-  if (oldTooltip) {
+
+  let oldTooltips = parent.querySelectorAll(".tps-tooltip, .tps-tooltip-text");
+  for (let oldTooltip of oldTooltips) {
     oldTooltip.remove();
   }
 
