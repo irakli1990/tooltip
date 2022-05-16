@@ -7,7 +7,7 @@
 
 let parent;
 let tooltip;
-let tooltipIcon;
+let tooltipText;
 
 /**
  * positions for element
@@ -58,58 +58,113 @@ var setToolTip = function ({ el, selector, content }) {
    * create tooltip and tooltipIconText
    */
   tooltip = document.createElement(elements.div);
-  tooltipIcon = document.createElement(elements.span);
+  tooltipText = document.createElement(elements.span);
 
   /**
    * assign styles to tooltip
    */
   tooltip = document.createElement(elements.div);
   tooltip.classList.add("tps-tooltip");
+  tooltip.setAttribute("id", `tooltip_${id}`);
   tooltip.style.cursor = "pointer";
-  tooltipIcon = document.createElement(elements.div);
+  tooltipText = document.createElement(elements.div);
 
   /**
    * add content to tooltip
    */
-  tooltipIcon.innerText = content;
-  tooltipIcon.classList.add("tps-tooltip-text");
+  tooltipText.innerText = content;
+  tooltipText.classList.add("tps-tooltip-text");
+  tooltipText.setAttribute("id", `tooltip_text_${id}`);
 
   /**
    * append created elements to it's parents
    */
   parent.appendChild(tooltip);
-  parent.appendChild(tooltipIcon);
+  parent.appendChild(tooltipText);
 
   /**
    * set on click event to icon
    */
 
+  const selectedToolTipText = document.getElementById(id).lastChild;
+
   tooltip.addEventListener("click", (event) => {
     let parentWidth = document.getElementById(id).offsetWidth;
-    let childWidth = document.getElementById(id).lastChild.offsetWidth;
+    let childWidth = selectedToolTipText.offsetWidth;
+
+    let activeObjects = Array.from(
+      document.getElementsByClassName("tps-tooltip__active")
+    );
+
+    let activeObjectsTexts = Array.from(
+      document.getElementsByClassName("tps-tooltip-text__active")
+    );
 
     if (!window.matchMedia("(min-width: 1366px)").matches) {
       if (parentWidth < childWidth) {
-        document
-          .getElementById(id)
-          .lastChild.classList.add("tps-tooltip-text__shrink");
+        selectedToolTipText.classList.add("tps-tooltip-text__shrink");
       }
     } else {
-      document
-        .getElementById(id)
-        .lastChild.classList.remove("tps-tooltip-text__shrink");
+      selectedToolTipText.classList.remove("tps-tooltip-text__shrink");
     }
-
-    if (!event.target.classList.contains("tps-tooltip__active")) {
+    let activeCount = activeObjects.length;
+    if (
+      !event.target.classList.contains("tps-tooltip__active") &&
+      activeCount == 0
+    ) {
       event.target.classList.add("tps-tooltip__active");
-      document
-        .getElementById(id)
-        .lastChild.classList.add("tps-tooltip-text__active");
+      selectedToolTipText.classList.add("tps-tooltip-text__active");
+      if (
+        document
+          .getElementById(id)
+          .parentNode.parentNode.classList.contains("u-flex") &&
+        window.matchMedia("(min-width: 1366px)").matches
+      ) {
+        if (
+          document.getElementById(id).parentNode.parentNode.children.length > 1
+        ) {
+          let aW = document
+            .getElementById(id)
+            .parentNode.parentNode.getBoundingClientRect();
+          let sR =
+            document.getElementById(id).parentNode.parentNode.children[1];
+          let sRt = sR.querySelector(".tps-tooltip-text");
+          sRt.style = `right: ${aW.width + 20}px !important`;
+        }
+      }
     } else {
-      event.target.classList.remove("tps-tooltip__active");
+      activeObjects.forEach((element) =>
+        element.classList.remove("tps-tooltip__active")
+      );
+
+      activeObjectsTexts.forEach((element) =>
+        element.classList.remove("tps-tooltip-text__active")
+      );
+
+      event.target.classList.add("tps-tooltip__active");
+
       document
-        .getElementById(id)
-        .lastChild.classList.remove("tps-tooltip-text__active");
+        .getElementById(`tooltip_text_${id}`)
+        .classList.add("tps-tooltip-text__active");
+
+      if (
+        document
+          .getElementById(id)
+          .parentNode.parentNode.classList.contains("u-flex") &&
+        window.matchMedia("(min-width: 1366px)").matches
+      ) {
+        if (
+          document.getElementById(id).parentNode.parentNode.children.length > 1
+        ) {
+          let aW = document
+            .getElementById(id)
+            .parentNode.parentNode.getBoundingClientRect();
+          let sR =
+            document.getElementById(id).parentNode.parentNode.children[1];
+          let sRt = sR.querySelector(".tps-tooltip-text");
+          sRt.style = `right: ${aW.width + 20}px !important`;
+        }
+      }
     }
   });
 
@@ -121,32 +176,19 @@ var setToolTip = function ({ el, selector, content }) {
     let activeObjectsTexts = Array.from(
       document.getElementsByClassName("tps-tooltip-text__active")
     );
-    let activeCount = activeObjects.length;
 
-    if (event.target.classList.contains("onoffswitch")) return;
-
-    if (event.target.classList.contains("tps-tooltip") && activeCount == 1) {
-      return false;
-    } else if (
-      event.target.classList.contains("tps-tooltip") &&
-      activeCount > 1
-    ) {
+    if (event.target.classList.contains("tps-tooltip")) {
+      return;
+    } else {
       activeObjects.forEach((element) =>
         element.classList.remove("tps-tooltip__active")
       );
-      event.target.classList.add("tps-tooltip__active");
+
+      activeObjectsTexts.forEach((element) =>
+        element.classList.remove("tps-tooltip-text__active")
+      );
     }
-
-    activeObjects.forEach((element) =>
-      element.classList.remove("tps-tooltip__active")
-    );
-
-    activeObjectsTexts.forEach((element) =>
-      element.classList.remove("tps-tooltip-text__active")
-    );
   };
-
-  // return parent;
 };
 
 /**

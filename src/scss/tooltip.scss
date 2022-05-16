@@ -79,12 +79,14 @@ div.tps-tooltip-text {
   font-size: 14px !important;
   line-height: 16.41px !important;
   align-items: center !important;
-  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
   visibility: hidden;
   position: absolute;
   display: flex !important;
   box-shadow: gray 1px 1px 1px;
-  filter: blur(4);
+  -webkit-filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
   z-index: 1;
 
   @media screen and (min-width: $screen-xs-min) {
@@ -197,25 +199,21 @@ div.tps-tooltip-text {
   }
   @media screen and (min-width: $screen-xl-min) {
     top: 0 !important;
-    // min-height: 81px;
     right: calc(100% + 20px) !important;
     width: 178px;
-    padding: 18px 11px 12px 17px !important; // (top, right, bottom, and left).
+    padding: 12px 11px 12px 17px !important; // (top, right, bottom, and left).
     -webkit-transform: translateY(-10%);
     transform: translateY(-10%);
     &:after {
       content: "";
-      color: transparent;
       position: absolute;
-      left: 97%;
-      top: 0px;
-      border-radius: 2px;
-      transform: rotate(155deg);
-      width: 0;
-      height: 0;
-      border-left: 15px solid transparent;
-      border-right: 15px solid transparent;
-      border-top: 15px solid #0078c2;
+      top: 0;
+      right: 0;
+      margin-top: 5px;
+      margin-left: -2px;
+      border-width: 8px;
+      border-style: solid;
+      border-color: transparent transparent transparent #0078c2;
     }
   }
 

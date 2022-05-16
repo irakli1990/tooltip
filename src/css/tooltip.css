@@ -63,12 +63,13 @@ div.tps-tooltip-text {
   font-size: 14px !important;
   line-height: 16.41px !important;
   align-items: center !important;
-  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
   visibility: hidden;
   position: absolute;
   display: flex !important;
   box-shadow: gray 1px 1px 1px;
-  filter: blur(4);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
   z-index: 1;
 }
 @media screen and (min-width: 375px) {
@@ -184,22 +185,19 @@ div.tps-tooltip-text {
     top: 0 !important;
     right: calc(100% + 20px) !important;
     width: 178px;
-    padding: 18px 11px 12px 17px !important;
+    padding: 12px 11px 12px 17px !important;
     transform: translateY(-10%);
   }
   .tps-tooltip-text:after {
     content: "";
-    color: transparent;
     position: absolute;
-    left: 97%;
-    top: 0px;
-    border-radius: 2px;
-    transform: rotate(155deg);
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-top: 15px solid #0078c2;
+    top: 0;
+    right: 0;
+    margin-top: 5px;
+    margin-left: -2px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent #0078c2;
   }
 }
 .tps-tooltip-text__active {
@@ -214,4 +212,4 @@ div.tps-tooltip-text {
   position: absolute;
   top: 100%;
   left: 100%;
-} /*# sourceMappingURL=tooltip.css.map */
+}/*# sourceMappingURL=tooltip.css.map */
