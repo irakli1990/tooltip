@@ -15,38 +15,16 @@ div.tps-tooltip-text {
 .tps-tooltip {
   height: 18px;
   width: 18px;
-  border-radius: 50%;
-  border: 1.5px solid #0078c2;
   position: absolute;
-  text-align: center;
   top: 0;
   right: 0;
-  background-color: #fff;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-image: url(../svg/inactive.svg);
 }
 .tps-tooltip:hover {
-  background: #c8e1f0;
-}
-.tps-tooltip:before {
-  content: "?";
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-  font-weight: 700;
-  color: #0078c2;
-}
-.tps-tooltip__active::before {
-  content: "?";
-  color: #fff;
+  background-image: url(../svg/hovered.svg);
 }
 .tps-tooltip__active {
-  background-color: #0078c2;
-}
-.tps-tooltip__active:hover {
-  background-color: #0078c2;
+  background-image: url(../svg/active.svg);
 }
 .tps-tooltip__active .tps-tooltip__text {
   visibility: visible;
