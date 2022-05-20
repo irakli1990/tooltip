@@ -84,7 +84,6 @@ div.tps-tooltip-text {
 
   //small mobile
   @include break-point($small-mobile) {
-    position: absolute;
     width: 300px;
     bottom: 150%;
     right: 0;
@@ -102,7 +101,6 @@ div.tps-tooltip-text {
 
   // mobile
   @include break-point($mobile) {
-    position: absolute;
     width: 300px;
     bottom: 150%;
     right: 0;
@@ -120,7 +118,6 @@ div.tps-tooltip-text {
 
   // tablet
   @include break-point($tablet) {
-    position: absolute;
     width: 300px;
     bottom: 125%;
     right: -6px;

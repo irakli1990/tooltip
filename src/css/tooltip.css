@@ -62,7 +62,6 @@ div.tps-tooltip-text {
 }
 @media only screen and (max-width: 570px) {
   .tps-tooltip-text {
-    position: absolute;
     width: 300px;
     bottom: 150%;
     right: 0;
@@ -79,7 +78,6 @@ div.tps-tooltip-text {
 }
 @media only screen and (max-width: 640px) {
   .tps-tooltip-text {
-    position: absolute;
     width: 300px;
     bottom: 150%;
     right: 0;
@@ -96,7 +94,6 @@ div.tps-tooltip-text {
 }
 @media only screen and (max-width: 768px) {
   .tps-tooltip-text {
-    position: absolute;
     width: 300px;
     bottom: 125%;
     right: -6px;
