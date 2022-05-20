@@ -63,7 +63,7 @@ div.tps-tooltip-text {
   visibility: hidden;
   position: absolute;
   transition: opacity 0.5s ease-in-out;
-  box-shadow: 0px 2px 4px rgb(0, 0, 0, 25%);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 25%);
   padding: 12px 11px 12px 17px;
   z-index: 1;
 
@@ -78,7 +78,6 @@ div.tps-tooltip-text {
       top: 14px;
       left: 100%;
       margin-left: -4px;
-      filter: drop-shadow(0px 2px 4px rgb(0, 0, 0, 25%));
     }
   }
 
@@ -95,7 +94,6 @@ div.tps-tooltip-text {
       top: calc(100% - 5px);
       left: calc(100% - 23px);
       transform: rotate(90deg);
-      filter: drop-shadow(0px 2px 4px rgb(0, 0, 0, 25%));
     }
   }
 
@@ -104,7 +102,6 @@ div.tps-tooltip-text {
     width: 300px;
     bottom: 150%;
     right: 0;
-
     padding: 14px 16px 11px 12px; // (top, right, bottom, and left).
     &:after {
       content: url(../svg/arrow.svg);
@@ -112,7 +109,6 @@ div.tps-tooltip-text {
       top: calc(100% - 5px);
       left: calc(100% - 23px);
       transform: rotate(90deg);
-      filter: drop-shadow(0px 2px 4px rgb(0, 0, 0, 25%));
     }
   }
 
@@ -129,7 +125,6 @@ div.tps-tooltip-text {
       top: calc(100% - 5px);
       left: calc(100% - 23px);
       transform: rotate(90deg);
-      filter: drop-shadow(0px 2px 4px rgb(0, 0, 0, 25%));
     }
   }
 
