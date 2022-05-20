@@ -1,7 +1,6 @@
 /* Extra small devices (phones, 600px and down) */
 /* Extra small devices (phones, 600px and down) */
 /* Medium devices (landscape tablets, 768px and up) */
-/* Large devices (laptops/desktops, 992px and up) */
 div.tps-tooltip-text {
   font-size: 14px;
   font-family: Roboto;
@@ -20,8 +19,10 @@ div.tps-tooltip-text {
   right: 0;
   background-image: url(../svg/inactive.svg);
 }
-.tps-tooltip:hover {
-  background-image: url(../svg/hovered.svg);
+@media only screen and (min-width: 1366px) {
+  .tps-tooltip:hover {
+    background-image: url(../svg/hovered.svg);
+  }
 }
 .tps-tooltip__active {
   background-image: url(../svg/active.svg);
@@ -32,149 +33,82 @@ div.tps-tooltip-text {
 }
 
 .tps-tooltip-text {
-  font-family: "Roboto";
-  font-style: normal;
-  background-color: #0078c2 !important;
-  color: #fff !important;
-  border-radius: 6px !important;
-  font-weight: 400 !important;
-  font-size: 14px !important;
-  line-height: 16.41px !important;
-  align-items: center !important;
+  background-color: #0078c2;
+  border-radius: 6px;
+  color: #fff;
   opacity: 0;
-  transition: opacity 0.8s ease-in-out;
   visibility: hidden;
   position: absolute;
-  display: flex !important;
-  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+  transition: opacity 0.5s ease-in-out;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  padding: 12px 11px 12px 17px;
   z-index: 1;
 }
-@media screen and (min-width: 375px) {
+@media only screen and (min-width: 1366px) {
   .tps-tooltip-text {
-    top: -10px !important;
-    right: 0 !important;
-    width: 219px;
-    min-width: 160px;
-    min-height: 41px;
-    box-sizing: border-box;
-    padding: 14px 16px 11px 12px !important;
-    transform: translateY(-114%);
-  }
-  .tps-tooltip-text:after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 100%;
-    margin-left: -15px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #0078c2 transparent transparent transparent;
-  }
-}
-@media screen and (max-width: 375px) {
-  .tps-tooltip-text {
-    top: -10px !important;
-    right: 0 !important;
-    padding: 14px 16px 11px 12px !important;
-    width: 219px;
-    min-width: 160px;
-    min-height: 41px;
-    box-sizing: border-box;
-    transform: translateY(-114%);
-  }
-  .tps-tooltip-text:after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 100%;
-    margin-left: -15px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #0078c2 transparent transparent transparent;
-  }
-}
-@media screen and (min-width: 600px) {
-  .tps-tooltip-text {
-    top: -10px !important;
-    right: 0 !important;
-    min-width: 160px;
-    width: 219px;
-    box-sizing: border-box;
-    min-height: 41px;
-    padding: 14px 16px 11px 12px !important;
-    transform: translateY(-114%);
-  }
-  .tps-tooltip-text:after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 100%;
-    margin-left: -15px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #0078c2 transparent transparent transparent;
-  }
-}
-@media screen and (min-width: 768px) {
-  .tps-tooltip-text {
-    top: -10px !important;
-    right: 0 !important;
-    width: 219px;
-    padding: 14px 16px 11px 12px !important;
-    min-height: 41px;
-    box-sizing: border-box;
-    transform: translateY(-114%);
-  }
-  .tps-tooltip-text:after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 100%;
-    margin-left: -15px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #0078c2 transparent transparent transparent;
-  }
-}
-@media screen and (min-width: 992px) {
-  .tps-tooltip-text {
-    top: -10px !important;
-    right: 0 !important;
-    width: 219px;
-    padding: 14px 16px 11px 12px !important;
-    min-width: 160px;
-    transform: translateY(-114%);
-    min-height: 41px;
-  }
-  .tps-tooltip-text:after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 100%;
-    margin-left: -15px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #0078c2 transparent transparent transparent;
-  }
-}
-@media screen and (min-width: 1366px) {
-  .tps-tooltip-text {
-    top: 0 !important;
-    right: calc(100% + 20px) !important;
-    width: 178px;
-    padding: 12px 11px 12px 17px !important;
-    transform: translateY(-10%);
-  }
-  .tps-tooltip-text:after {
-    content: "";
-    position: absolute;
     top: 0;
+    margin-top: -14px;
+    width: 178px;
+    right: calc(100% + 20px);
+  }
+  .tps-tooltip-text:after {
+    content: url(../svg/arrow.svg);
+    position: absolute;
+    top: 14px;
+    left: 100%;
+    margin-left: -4px;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
+  }
+}
+@media only screen and (max-width: 570px) {
+  .tps-tooltip-text {
+    position: absolute;
+    width: 300px;
+    bottom: 150%;
     right: 0;
-    margin-top: 5px;
-    margin-left: -2px;
-    border-width: 8px;
-    border-style: solid;
-    border-color: transparent transparent transparent #0078c2;
+    padding: 14px 16px 11px 12px;
+  }
+  .tps-tooltip-text:after {
+    content: url(../svg/arrow.svg);
+    position: absolute;
+    top: calc(100% - 5px);
+    left: calc(100% - 23px);
+    transform: rotate(90deg);
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
+  }
+}
+@media only screen and (max-width: 640px) {
+  .tps-tooltip-text {
+    position: absolute;
+    width: 300px;
+    bottom: 150%;
+    right: 0;
+    padding: 14px 16px 11px 12px;
+  }
+  .tps-tooltip-text:after {
+    content: url(../svg/arrow.svg);
+    position: absolute;
+    top: calc(100% - 5px);
+    left: calc(100% - 23px);
+    transform: rotate(90deg);
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
+  }
+}
+@media only screen and (max-width: 768px) {
+  .tps-tooltip-text {
+    position: absolute;
+    width: 300px;
+    bottom: 125%;
+    right: -6px;
+    padding: 14px 16px 11px 12px;
+  }
+  .tps-tooltip-text:after {
+    content: url(../svg/arrow.svg);
+    position: absolute;
+    top: calc(100% - 5px);
+    left: calc(100% - 23px);
+    transform: rotate(90deg);
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
   }
 }
 .tps-tooltip-text__active {
@@ -182,11 +116,15 @@ div.tps-tooltip-text {
   opacity: 1;
 }
 .tps-tooltip-text__shrink {
-  width: 170px;
+  width: 160px;
+  z-index: 1;
+  bottom: 125%;
+  right: -6px;
 }
 .tps-tooltip-text__shrink:after {
-  content: "";
+  content: url(../svg/arrow.svg);
   position: absolute;
-  top: 100%;
-  left: 100%;
+  top: calc(100% - 5px);
+  left: calc(100% - 23px);
+  transform: rotate(90deg);
 }/*# sourceMappingURL=tooltip.css.map */

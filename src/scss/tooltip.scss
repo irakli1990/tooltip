@@ -1,17 +1,24 @@
 /* Extra small devices (phones, 600px and down) */
-$screen-xs-min: 375px;
-
+$small-mobile: 570px;
 /* Extra small devices (phones, 600px and down) */
-$screen-sm-min: 600px;
+$mobile: 640px;
 
 /* Medium devices (landscape tablets, 768px and up) */
-$screen-md-min: 768px;
+$tablet: 768px;
 
-/* Large devices (laptops/desktops, 992px and up) */
-$screen-lg-min: 992px;
+$desktop: 1366px;
 
-// Large tablets and desktops
-$screen-xl-min: 1366px;
+@mixin break-point($w) {
+  @media only screen and (max-width: $w) {
+    @content;
+  }
+}
+
+@mixin break-point-desktop($w) {
+  @media only screen and (min-width: $w) {
+    @content;
+  }
+}
 
 div.tps-tooltip-text {
   font-size: 14px;
@@ -29,10 +36,13 @@ div.tps-tooltip-text {
   position: absolute;
   top: 0;
   right: 0;
+
   background-image: url(../svg/inactive.svg);
 
-  &:hover {
-    background-image: url(../svg/hovered.svg);
+  @include break-point-desktop($desktop) {
+    &:hover {
+      background-image: url(../svg/hovered.svg);
+    }
   }
 
   &__active {
@@ -46,149 +56,83 @@ div.tps-tooltip-text {
 }
 
 .tps-tooltip-text {
-  font-family: "Roboto";
-  font-style: normal;
-  background-color: #0078c2 !important;
-  color: #fff !important;
-  border-radius: 6px !important;
-  font-weight: 400 !important;
-  font-size: 14px !important;
-  line-height: 16.41px !important;
-  align-items: center !important;
+  background-color: #0078c2;
+  border-radius: 6px;
+  color: #fff;
   opacity: 0;
-  transition: opacity 0.8s ease-in-out;
   visibility: hidden;
   position: absolute;
-  display: flex !important;
-  -webkit-filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
-  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+  transition: opacity 0.5s ease-in-out;
+  box-shadow: 0px 2px 4px rgb(0, 0, 0, 25%);
+  padding: 12px 11px 12px 17px;
   z-index: 1;
 
-  @media screen and (min-width: $screen-xs-min) {
-    top: -10px !important;
-    right: 0 !important;
-    width: 219px;
-    min-width: 160px;
-    min-height: 41px;
-    box-sizing: border-box;
-    padding: 14px 16px 11px 12px !important; // (top, right, bottom, and left).
-    -webkit-transform: translateY(-114%);
-    transform: translateY(-114%);
-
-    &:after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 100%;
-      margin-left: -15px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: #0078c2 transparent transparent transparent;
-    }
-  }
-
-  @media screen and (max-width: $screen-xs-min) {
-    top: -10px !important;
-    right: 0 !important;
-    padding: 14px 16px 11px 12px !important; // (top, right, bottom, and left).
-    width: 219px;
-    min-width: 160px;
-    min-height: 41px;
-    box-sizing: border-box;
-    -webkit-transform: translateY(-114%);
-    transform: translateY(-114%);
-
-    &:after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 100%;
-      margin-left: -15px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: #0078c2 transparent transparent transparent;
-    }
-  }
-  @media screen and (min-width: $screen-sm-min) {
-    top: -10px !important;
-    right: 0 !important;
-    min-width: 160px;
-    width: 219px;
-    box-sizing: border-box;
-    min-height: 41px;
-    padding: 14px 16px 11px 12px !important; // (top, right, bottom, and left).
-    -webkit-transform: translateY(-114%);
-    transform: translateY(-114%);
-    &:after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 100%;
-      margin-left: -15px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: #0078c2 transparent transparent transparent;
-    }
-  }
-  @media screen and (min-width: $screen-md-min) {
-    top: -10px !important;
-    right: 0 !important;
-    width: 219px;
-    padding: 14px 16px 11px 12px !important; // (top, right, bottom, and left).
-    min-height: 41px;
-    box-sizing: border-box;
-    -webkit-transform: translateY(-114%);
-    transform: translateY(-114%);
-
-    &:after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 100%;
-      margin-left: -15px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: #0078c2 transparent transparent transparent;
-    }
-  }
-  @media screen and (min-width: $screen-lg-min) {
-    top: -10px !important;
-    right: 0 !important;
-    width: 219px;
-    padding: 14px 16px 11px 12px !important; // (top, right, bottom, and left).
-    min-width: 160px;
-    -webkit-transform: translateY(-114%);
-    transform: translateY(-114%);
-    min-height: 41px;
-
-    &:after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 100%;
-      margin-left: -15px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: #0078c2 transparent transparent transparent;
-    }
-  }
-  @media screen and (min-width: $screen-xl-min) {
-    top: 0 !important;
-    right: calc(100% + 20px) !important;
+  @include break-point-desktop($desktop) {
+    top: 0;
+    margin-top: -14px;
     width: 178px;
-    padding: 12px 11px 12px 17px !important; // (top, right, bottom, and left).
-    -webkit-transform: translateY(-10%);
-    transform: translateY(-10%);
+    right: calc(100% + 20px);
     &:after {
-      content: "";
+      content: url(../svg/arrow.svg);
       position: absolute;
-      top: 0;
-      right: 0;
-      margin-top: 5px;
-      margin-left: -2px;
-      border-width: 8px;
-      border-style: solid;
-      border-color: transparent transparent transparent #0078c2;
+      top: 14px;
+      left: 100%;
+      margin-left: -4px;
+      filter: drop-shadow(0px 2px 4px rgb(0, 0, 0, 25%));
+    }
+  }
+
+  //small mobile
+  @include break-point($small-mobile) {
+    position: absolute;
+    width: 300px;
+    bottom: 150%;
+    right: 0;
+
+    padding: 14px 16px 11px 12px; // (top, right, bottom, and left).
+    &:after {
+      content: url(../svg/arrow.svg);
+      position: absolute;
+      top: calc(100% - 5px);
+      left: calc(100% - 23px);
+      transform: rotate(90deg);
+      filter: drop-shadow(0px 2px 4px rgb(0, 0, 0, 25%));
+    }
+  }
+
+  // mobile
+  @include break-point($mobile) {
+    position: absolute;
+    width: 300px;
+    bottom: 150%;
+    right: 0;
+
+    padding: 14px 16px 11px 12px; // (top, right, bottom, and left).
+    &:after {
+      content: url(../svg/arrow.svg);
+      position: absolute;
+      top: calc(100% - 5px);
+      left: calc(100% - 23px);
+      transform: rotate(90deg);
+      filter: drop-shadow(0px 2px 4px rgb(0, 0, 0, 25%));
+    }
+  }
+
+  // tablet
+  @include break-point($tablet) {
+    position: absolute;
+    width: 300px;
+    bottom: 125%;
+    right: -6px;
+
+    padding: 14px 16px 11px 12px; // (top, right, bottom, and left).
+    &:after {
+      content: url(../svg/arrow.svg);
+      position: absolute;
+      top: calc(100% - 5px);
+      left: calc(100% - 23px);
+      transform: rotate(90deg);
+      filter: drop-shadow(0px 2px 4px rgb(0, 0, 0, 25%));
     }
   }
 
@@ -198,12 +142,16 @@ div.tps-tooltip-text {
   }
 
   &__shrink {
-    width: 170px;
+    width: 160px;
+    z-index: 1;
+    bottom: 125%;
+    right: -6px;
     &:after {
-      content: "";
+      content: url(../svg/arrow.svg);
       position: absolute;
-      top: 100%;
-      left: 100%;
+      top: calc(100% - 5px);
+      left: calc(100% - 23px);
+      transform: rotate(90deg);
     }
   }
 }
