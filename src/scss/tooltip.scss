@@ -1,4 +1,6 @@
 /* Extra small devices (phones, 600px and down) */
+$ex-small-mobile: 375px;
+/* small devices (phones, 600px and down) */
 $small-mobile: 570px;
 /* Extra small devices (phones, 600px and down) */
 $mobile: 640px;
@@ -74,6 +76,25 @@ $desktop: 1366px;
       top: 14px;
       left: 100%;
       margin-left: -4px;
+    }
+  }
+
+  //small mobile
+  @include break-point($ex-small-mobile) {
+    max-width: 300px;
+    width: -moz-fit-content;
+    width: fit-content;
+    bottom: 125%;
+    right: -6px;
+    font-size: 15px;
+    line-height: 20px;
+    padding: 14px 16px 11px 12px; // (top, right, bottom, and left).
+    &:after {
+      content: url(../svg/arrow.svg);
+      position: absolute;
+      top: calc(100% - 6px);
+      left: calc(100% - 23px);
+      transform: rotate(90deg);
     }
   }
 
