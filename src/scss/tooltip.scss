@@ -198,9 +198,11 @@ $desktop: 1366px;
   padding: 14px 16px 11px 12px; // (top, right, bottom, and left).
   &:after {
     content: url(../svg/arrow.svg);
+    width: 18px;
+    height: 20px;
     position: absolute;
     top: calc(100% - 5px);
-    left: calc(100% - 23px);
+    left: calc(100% - 26px);
     transform: rotate(90deg);
   }
 
