@@ -73,6 +73,7 @@ var setToolTip = function ({ el, selector, content, forceTop = false }) {
    */
   tooltip = document.createElement(elements.div);
   tooltipText = document.createElement(elements.span);
+  tooltipText.style.visibility = "hidden";
 
   /**
    * assign styles to tooltip
@@ -93,8 +94,10 @@ var setToolTip = function ({ el, selector, content, forceTop = false }) {
   /**
    * append created elements to it's parents
    */
+
   parent.appendChild(tooltip);
   parent.appendChild(tooltipText);
+  // tooltipText.appendChild(link);
 
   /**
    * set on click event to icon
@@ -108,6 +111,7 @@ var setToolTip = function ({ el, selector, content, forceTop = false }) {
       elementText = document.getElementById(TOOLTIP_TEXT_ID);
       element.classList.add("tps-tooltip__active");
       elementText.classList.add(activeTextPosition);
+      // elementText.setAttribute("active", "true");
     } else {
       removeActive(forceTop);
     }
@@ -177,9 +181,10 @@ function removeActive(forceTop) {
   );
   getObjects(
     forceTop ? "tps-tooltip-text-top__active" : "tps-tooltip-text__active"
-  ).forEach((e) =>
+  ).forEach((e) => {
+    // e.setAttribute("active", "false");
     e.classList.remove(
       forceTop ? "tps-tooltip-text-top__active" : "tps-tooltip-text__active"
-    )
-  );
+    );
+  });
 }
