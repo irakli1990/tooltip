@@ -26,7 +26,7 @@ const elements = {
   span: "span",
 };
 
-var setToolTip = function ({ el, selector, content, force = false }) {
+var setToolTip = function ({ el, selector, content, forceTop = false }) {
   /**
    * check if there is any selector or element
    */
@@ -60,11 +60,11 @@ var setToolTip = function ({ el, selector, content, force = false }) {
   /**
    * set positions
    */
-  const activeTextPosition = force
+  const activeTextPosition = forceTop
     ? "tps-tooltip-text-top__active"
     : "tps-tooltip-text__active";
 
-  const textPosition = force ? "tps-tooltip-text-top" : "tps-tooltip-text";
+  const textPosition = forceTop ? "tps-tooltip-text-top" : "tps-tooltip-text";
 
   parent.setAttribute("id", id);
 
@@ -103,16 +103,16 @@ var setToolTip = function ({ el, selector, content, force = false }) {
   tooltip.addEventListener("click", (event) => {
     let element, elementText;
     if (!event.target.classList.contains("tps-tooltip__active")) {
-      removeActive(force);
+      removeActive(forceTop);
       element = document.getElementById(TOOLTIP_ID);
       elementText = document.getElementById(TOOLTIP_TEXT_ID);
       element.classList.add("tps-tooltip__active");
       elementText.classList.add(activeTextPosition);
     } else {
-      removeActive(force);
+      removeActive(forceTop);
     }
 
-    if (!force) {
+    if (!forceTop) {
       if (
         document
           .getElementById(id)
@@ -139,7 +139,7 @@ var setToolTip = function ({ el, selector, content, force = false }) {
       !event.target.classList.contains("tps-tooltip__active") &&
       !event.target.classList.contains("tps-tooltip")
     ) {
-      removeActive(force);
+      removeActive(forceTop);
     }
   };
 };
@@ -162,17 +162,17 @@ function getObjects(className) {
 }
 /**
  *
- * @param {to force remove top position} force
+ * @param {to forceTop remove top position} forceTop
  */
-function removeActive(force) {
+function removeActive(forceTop) {
   getObjects("tps-tooltip__active").forEach((e) =>
     e.classList.remove("tps-tooltip__active")
   );
   getObjects(
-    force ? "tps-tooltip-text-top__active" : "tps-tooltip-text__active"
+    forceTop ? "tps-tooltip-text-top__active" : "tps-tooltip-text__active"
   ).forEach((e) =>
     e.classList.remove(
-      force ? "tps-tooltip-text-top__active" : "tps-tooltip-text__active"
+      forceTop ? "tps-tooltip-text-top__active" : "tps-tooltip-text__active"
     )
   );
 }
