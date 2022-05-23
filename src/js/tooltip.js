@@ -136,6 +136,13 @@ var setToolTip = function ({ el, selector, content, forceTop = false }) {
 
   window.document.onclick = function (event) {
     if (
+      event.target.classList.contains(
+        forceTop ? "tps-tooltip-text-top__active" : "tps-tooltip-text__active"
+      )
+    ) {
+      return;
+    }
+    if (
       !event.target.classList.contains("tps-tooltip__active") &&
       !event.target.classList.contains("tps-tooltip")
     ) {
