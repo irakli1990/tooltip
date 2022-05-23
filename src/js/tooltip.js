@@ -26,7 +26,7 @@ const elements = {
   span: "span",
 };
 
-var setToolTip = function ({ el, selector, content }) {
+var setToolTip = function ({ el, selector, content, force = false }) {
   /**
    * check if there is any selector or element
    */
@@ -50,7 +50,21 @@ var setToolTip = function ({ el, selector, content }) {
     oldTooltip.remove();
   }
 
+  /**
+   * set ids
+   */
   const id = uuidv4();
+  const TOOLTIP_ID = `tps-tooltip_${id}`;
+  const TOOLTIP_TEXT_ID = `tps-tooltip-text_${id}`;
+
+  /**
+   * set positions
+   */
+  const activeTextPosition = force
+    ? "tps-tooltip-text-top__active"
+    : "tps-tooltip-text__active";
+
+  const textPosition = force ? "tps-tooltip-text-top" : "tps-tooltip-text";
 
   parent.setAttribute("id", id);
 
@@ -65,7 +79,7 @@ var setToolTip = function ({ el, selector, content }) {
    */
   tooltip = document.createElement(elements.div);
   tooltip.classList.add("tps-tooltip");
-  tooltip.setAttribute("id", `tooltip_${id}`);
+  tooltip.setAttribute("id", TOOLTIP_ID);
   tooltip.style.cursor = "pointer";
   tooltipText = document.createElement(elements.div);
 
@@ -73,8 +87,8 @@ var setToolTip = function ({ el, selector, content }) {
    * add content to tooltip
    */
   tooltipText.innerText = content;
-  tooltipText.classList.add("tps-tooltip-text");
-  tooltipText.setAttribute("id", `tooltip_text_${id}`);
+  tooltipText.classList.add(textPosition);
+  tooltipText.setAttribute("id", TOOLTIP_TEXT_ID);
 
   /**
    * append created elements to it's parents
@@ -86,34 +100,19 @@ var setToolTip = function ({ el, selector, content }) {
    * set on click event to icon
    */
 
-  const selectedToolTipText = document.getElementById(id).lastChild;
-
   tooltip.addEventListener("click", (event) => {
-    let parentWidth = document.getElementById(id).offsetWidth;
-    let childWidth = selectedToolTipText.offsetWidth;
-
-    let activeObjects = Array.from(
-      document.getElementsByClassName("tps-tooltip__active")
-    );
-
-    let activeObjectsTexts = Array.from(
-      document.getElementsByClassName("tps-tooltip-text__active")
-    );
-
-    if (!window.matchMedia("(min-width: 1366px)").matches) {
-      if (parentWidth < childWidth) {
-        selectedToolTipText.classList.add("tps-tooltip-text__shrink");
-      }
+    let element, elementText;
+    if (!event.target.classList.contains("tps-tooltip__active")) {
+      removeActive(force);
+      element = document.getElementById(TOOLTIP_ID);
+      elementText = document.getElementById(TOOLTIP_TEXT_ID);
+      element.classList.add("tps-tooltip__active");
+      elementText.classList.add(activeTextPosition);
     } else {
-      selectedToolTipText.classList.remove("tps-tooltip-text__shrink");
+      removeActive(force);
     }
-    let activeCount = activeObjects.length;
-    if (
-      !event.target.classList.contains("tps-tooltip__active") &&
-      activeCount == 0
-    ) {
-      event.target.classList.add("tps-tooltip__active");
-      selectedToolTipText.classList.add("tps-tooltip-text__active");
+
+    if (!force) {
       if (
         document
           .getElementById(id)
@@ -123,70 +122,24 @@ var setToolTip = function ({ el, selector, content }) {
         if (
           document.getElementById(id).parentNode.parentNode.children.length > 1
         ) {
-          let aW = document
+          let pw = document
             .getElementById(id)
             .parentNode.parentNode.getBoundingClientRect();
-          let sR =
+          let sp =
             document.getElementById(id).parentNode.parentNode.children[1];
-          let sRt = sR.querySelector(".tps-tooltip-text");
-          sRt.style = `right: ${aW.width + 20}px !important`;
-        }
-      }
-    } else {
-      activeObjects.forEach((element) =>
-        element.classList.remove("tps-tooltip__active")
-      );
-
-      activeObjectsTexts.forEach((element) =>
-        element.classList.remove("tps-tooltip-text__active")
-      );
-
-      event.target.classList.add("tps-tooltip__active");
-
-      document
-        .getElementById(`tooltip_text_${id}`)
-        .classList.add("tps-tooltip-text__active");
-
-      if (
-        document
-          .getElementById(id)
-          .parentNode.parentNode.classList.contains("u-flex") &&
-        window.matchMedia("(min-width: 1366px)").matches
-      ) {
-        if (
-          document.getElementById(id).parentNode.parentNode.children.length > 1
-        ) {
-          let aW = document
-            .getElementById(id)
-            .parentNode.parentNode.getBoundingClientRect();
-          let sR =
-            document.getElementById(id).parentNode.parentNode.children[1];
-          let sRt = sR.querySelector(".tps-tooltip-text");
-          sRt.style = `right: ${aW.width + 20}px !important`;
+          let st = sp.querySelector(".tps-tooltip-text");
+          st.style = `right: ${pw.width + 20}px !important`;
         }
       }
     }
   });
 
   window.document.onclick = function (event) {
-    let activeObjects = Array.from(
-      document.getElementsByClassName("tps-tooltip__active")
-    );
-
-    let activeObjectsTexts = Array.from(
-      document.getElementsByClassName("tps-tooltip-text__active")
-    );
-
-    if (event.target.classList.contains("tps-tooltip")) {
-      return;
-    } else {
-      activeObjects.forEach((element) =>
-        element.classList.remove("tps-tooltip__active")
-      );
-
-      activeObjectsTexts.forEach((element) =>
-        element.classList.remove("tps-tooltip-text__active")
-      );
+    if (
+      !event.target.classList.contains("tps-tooltip__active") &&
+      !event.target.classList.contains("tps-tooltip")
+    ) {
+      removeActive(force);
     }
   };
 };
@@ -201,5 +154,25 @@ function uuidv4() {
       c ^
       (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
     ).toString(16)
+  );
+}
+
+function getObjects(className) {
+  return Array.from(document.getElementsByClassName(className));
+}
+/**
+ *
+ * @param {to force remove top position} force
+ */
+function removeActive(force) {
+  getObjects("tps-tooltip__active").forEach((e) =>
+    e.classList.remove("tps-tooltip__active")
+  );
+  getObjects(
+    force ? "tps-tooltip-text-top__active" : "tps-tooltip-text__active"
+  ).forEach((e) =>
+    e.classList.remove(
+      force ? "tps-tooltip-text-top__active" : "tps-tooltip-text__active"
+    )
   );
 }

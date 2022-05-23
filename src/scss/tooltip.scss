@@ -20,16 +20,6 @@ $desktop: 1366px;
   }
 }
 
-div.tps-tooltip-text {
-  font-size: 14px;
-  font-family: Roboto;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16px;
-  letter-spacing: 0em;
-  text-align: left;
-}
-
 .tps-tooltip {
   height: 18px;
   width: 18px;
@@ -56,6 +46,12 @@ div.tps-tooltip-text {
 }
 
 .tps-tooltip-text {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
   background-color: #0078c2;
   border-radius: 6px;
   color: #fff;
@@ -69,7 +65,7 @@ div.tps-tooltip-text {
 
   @include break-point-desktop($desktop) {
     top: 0;
-    margin-top: -14px;
+    margin-top: -13px;
     width: 178px;
     right: calc(100% + 20px);
     &:after {
@@ -83,15 +79,18 @@ div.tps-tooltip-text {
 
   //small mobile
   @include break-point($small-mobile) {
-    width: 300px;
-    bottom: 150%;
-    right: 0;
-
+    max-width: 300px;
+    width: -moz-fit-content;
+    width: fit-content;
+    bottom: 125%;
+    right: -6px;
+    font-size: 15px;
+    line-height: 20px;
     padding: 14px 16px 11px 12px; // (top, right, bottom, and left).
     &:after {
       content: url(../svg/arrow.svg);
       position: absolute;
-      top: calc(100% - 5px);
+      top: calc(100% - 6px);
       left: calc(100% - 23px);
       transform: rotate(90deg);
     }
@@ -99,14 +98,18 @@ div.tps-tooltip-text {
 
   // mobile
   @include break-point($mobile) {
-    width: 300px;
-    bottom: 150%;
-    right: 0;
+    max-width: 300px;
+    width: -moz-fit-content;
+    width: fit-content;
+    bottom: 125%;
+    right: -6px;
+    font-size: 15px;
+    line-height: 20px;
     padding: 14px 16px 11px 12px; // (top, right, bottom, and left).
     &:after {
       content: url(../svg/arrow.svg);
       position: absolute;
-      top: calc(100% - 5px);
+      top: calc(100% - 6px);
       left: calc(100% - 23px);
       transform: rotate(90deg);
     }
@@ -114,15 +117,18 @@ div.tps-tooltip-text {
 
   // tablet
   @include break-point($tablet) {
-    width: 300px;
+    max-width: 300px;
+    width: -moz-fit-content;
+    width: fit-content;
     bottom: 125%;
     right: -6px;
-
+    font-size: 15px;
+    line-height: 20px;
     padding: 14px 16px 11px 12px; // (top, right, bottom, and left).
     &:after {
       content: url(../svg/arrow.svg);
       position: absolute;
-      top: calc(100% - 5px);
+      top: calc(100% - 6px);
       left: calc(100% - 23px);
       transform: rotate(90deg);
     }
@@ -134,8 +140,57 @@ div.tps-tooltip-text {
   }
 
   &__shrink {
-    width: 160px;
+    width: -moz-fit-content;
+    width: fit-content;
     z-index: 1;
+    bottom: 125%;
+    right: -6px;
+    font-size: 15px;
+    line-height: 20px;
+    &:after {
+      content: url(../svg/arrow.svg);
+      position: absolute;
+      top: calc(100% - 5px);
+      left: calc(100% - 23px);
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.tps-tooltip-text-top {
+  background-color: #0078c2;
+  border-radius: 6px;
+  color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  transition: opacity 0.5s ease-in-out;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 25%);
+  padding: 12px 11px 12px 17px;
+  z-index: 1;
+  max-width: 300px;
+  bottom: 125%;
+  right: -6px;
+  width: -moz-fit-content;
+  width: fit-content;
+
+  padding: 14px 16px 11px 12px; // (top, right, bottom, and left).
+  &:after {
+    content: url(../svg/arrow.svg);
+    position: absolute;
+    top: calc(100% - 5px);
+    left: calc(100% - 23px);
+    transform: rotate(90deg);
+  }
+
+  &__active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__shrink {
+    width: -moz-fit-content;
+    width: fit-content;
     bottom: 125%;
     right: -6px;
     &:after {
