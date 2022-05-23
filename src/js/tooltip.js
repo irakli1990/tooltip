@@ -73,7 +73,6 @@ var setToolTip = function ({ el, selector, content, forceTop = false }) {
    */
   tooltip = document.createElement(elements.div);
   tooltipText = document.createElement(elements.span);
-  tooltipText.style.visibility = "hidden";
 
   /**
    * assign styles to tooltip
